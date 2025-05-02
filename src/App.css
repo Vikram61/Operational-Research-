@@ -1,38 +1,348 @@
-.App {
+/* Container for the entire app */
+.lpp-container {
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  justify-content: space-between; /* Distribute space between form and output */
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  max-width: 1000px; /* Max width of the container */
+  margin: 0 auto;
+  width: 100%;
+  gap: 30px; /* Space between form and output */
+}
+
+/* Title Styling */
+.lpp-container h2 {
   text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Form styling (on the left side) */
+.lpp-form {
+  width: 60%; /* Take up 60% of the space */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Output section (on the right side) */
+.lpp-output {
+  width: 35%; /* Take up 35% of the space */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Style for input groups */
+.lpp-input-group {
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Labels with animation */
+.lpp-label {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+/* Inputs with smooth transitions */
+.lpp-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 400px; /* Increase input width */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+/* Input field focus and label interaction */
+.lpp-input:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #fff;
+}
+
+.lpp-input:focus + .lpp-label {
+  color: #007bff;
+}
+
+/* Button Styling */
+.lpp-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.lpp-button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the table containing the Simplex steps */
+table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Flex layout for the form to align items horizontally */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px; /* Adds spacing between inputs */
+}
+
+.form-row .lpp-input-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Add responsive design for smaller screens */
+@media (max-width: 600px) {
+  .lpp-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .lpp-form, .lpp-output {
+    width: 100%;
+  }
+
+  .lpp-input {
+    max-width: 100%;
+  }
+
+  .lpp-button {
+    width: 100%;
+  }
+
+  table {
+    font-size: 14px;
   }
 }
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #f8f9fa; /* Light theme background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-.App-header {
-  background-color: #282c34;
+/* Navbar Links */
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Space between the links */
+  font-size: larger;
+}
+
+/* Styling each link */
+.navbar .nav-links li {
+  font-size: 18px;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #333; /* Dark text for contrast on light background */
+  padding: 8px 15px;
+  transition: color 0.3s, background-color 0.3s;
+  border-radius: 4px;
+}
+
+/* Hover effect for links */
+.navbar .nav-links a:hover {
+  color: #007bff;
+  background-color: #e9ecef;
+}
+
+/* Navbar logo or home text */
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  cursor: pointer;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 40px;
+  gap: 40px;
+  font-family: 'Segoe UI', sans-serif;
   min-height: 100vh;
+  background-color: #f5f7fa;
+  flex-wrap: wrap;
+}
+
+.dashboard-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  max-width: 600px;
+}
+
+.dashboard-heading {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 30px;
+  font-size: 1.3rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.output-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 400px;
+  flex: 1;
+}
+
+.output-container h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+.home-container {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.home-heading {
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+
+.button-box {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid #007bff;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-button {
+  padding: 20px;
+  font-size: 1.2rem;
+  background-color: #f5f5f5;
+  border: 2px solid #007bff;
+  color: #007bff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.grid-button:hover {
+  background-color: #007bff;
   color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
-.App-link {
-  color: #61dafb;
+.grid-button:active {
+  transform: translateY(0);
+}
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.link-boxes {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  gap: 2rem;
+  justify-content: center;
+}
+
+.link-box {
+  background-color: #fffdd0; /* Cream */
+  color: #0000ff; /* Blue */
+  text-decoration: none;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.link-box:hover {
+  background-color: #f5f5dc;
+  color: #0033cc;
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
